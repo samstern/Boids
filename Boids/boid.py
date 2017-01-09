@@ -41,8 +41,8 @@ class Boid:
         :param y: y position
         '''
 
-        x_outside_boundary = x<self._x_pos_boundaries['low'] or x>self._s_pos_boundaries['high']
-        y_outside_boundary = y<self._y_pos_boundaries['low'] or y>self._s_pos_boundaries['high']
+        x_outside_boundary = x<self._x_pos_boundaries['low'] or x>self._x_pos_boundaries['high']
+        y_outside_boundary = y<self._y_pos_boundaries['low'] or y>self._y_pos_boundaries['high']
         if x_outside_boundary:
             raise ValueError('x position coordinate outside boundary')
         elif y_outside_boundary:
@@ -57,8 +57,8 @@ class Boid:
         :param x: x position
         :param y: y position
         '''
-        x_outside_boundary = x<self._x_vel_boundaries['low'] or x>self._s_vel_boundaries['high']
-        y_outside_boundary = y<self._y_vel_boundaries['low'] or y>self._s_vel_boundaries['high']
+        x_outside_boundary = x<self._x_vel_boundaries['low'] or x>self._x_vel_boundaries['high']
+        y_outside_boundary = y<self._y_vel_boundaries['low'] or y>self._y_vel_boundaries['high']
         if x_outside_boundary:
             raise ValueError('x velocity coordinate outside boundary')
         elif y_outside_boundary:
