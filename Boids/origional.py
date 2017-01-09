@@ -1,4 +1,4 @@
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 from matplotlib import animation
 import random
 
@@ -46,8 +46,8 @@ scatter=axes.scatter(boids[0],boids[1])
 def animate(frame):
     update_boids(boids)
     scatter.set_offsets(zip(boids[0],boids[1]))
-    anim = animation.FuncAnimation(figure, animate,
-                               frames=50, interval=50)
+
+anim = animation.FuncAnimation(figure, animate,frames=50, interval=50)
 
 if __name__ == "__main__":
     plt.show()
