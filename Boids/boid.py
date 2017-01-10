@@ -1,19 +1,48 @@
 import random
 class Boid:
 
-    #random initialisation
-    def __init__(self):
+
+    def __init__(self,*args):
+        '''
+
+        :param args: tuple of arguments in the form (x position, y position, x velocity, y velocity)
+        '''
         #boundries that the boids position and velocity must be between
         self._x_pos_boundaries = {'low':-450,'high':50.0}
         self._y_pos_boundaries = {'low':300.0,'high':600.0}
         self._x_vel_boundaries = {'low':0,'high':10.0}
         self._y_vel_boundaries = {'low':-20.0,'high':20.0}
 
-        #initialising boids position and velocity
-        self._x_pos=random.uniform(self._x_pos_boundaries['low'],self._x_pos_boundaries['high'])
-        self._y_pos=random.uniform(self._y_pos_boundaries['low'],self._y_pos_boundaries['high'])
-        self._x_vel=random.uniform(self._x_vel_boundaries['low'],self._x_vel_boundaries['high'])
-        self._y_vel=random.uniform(self._y_vel_boundaries['low'],self._y_vel_boundaries['high'])
+        if len(args)==0:
+            #initialising boids position and velocity
+            self._x_pos=random.uniform(self._x_pos_boundaries['low'],self._x_pos_boundaries['high'])
+            self._y_pos=random.uniform(self._y_pos_boundaries['low'],self._y_pos_boundaries['high'])
+            self._x_vel=random.uniform(self._x_vel_boundaries['low'],self._x_vel_boundaries['high'])
+            self._y_vel=random.uniform(self._y_vel_boundaries['low'],self._y_vel_boundaries['high'])
+        else:
+            #user defined position of boid
+            try:
+                x_position,y_position,x_velocity,y_velocity=args
+            except ValueError:
+                raise ValueError('args expected to be of length 4')
+            x_pos_outside_boundary = x_position<self._x_pos_boundaries['low'] or x_position>self._x_pos_boundaries['high']
+            y_pos_outside_boundary = y_position<self._y_pos_boundaries['low'] or y_position>self._y_pos_boundaries['high']
+            x_vel_outside_boundary = x_velocity<self._x_vel_boundaries['low'] or x_velocity>self._x_vel_boundaries['high']
+            y_vel_outside_boundary = y_velocity<self._y_vel_boundaries['low'] or y_velocity>self._y_vel_boundaries['high']
+            if x_pos_outside_boundary:
+                raise ValueError('x postion coordinate outside boundary')
+            elif y_pos_outside_boundary:
+                raise ValueError('y position coordinate outside boundary')
+            elif x_vel_outside_boundary:
+                raise ValueError('x velocity coordinate outside boundary')
+            elif y_vel_outside_boundary:
+                raise ValueError('y velocity coordinate outside boundary')
+            else:
+                self._x_pos=x_position
+                self._y_pos=y_position
+                self._x_vel=x_velocity
+                self._y_vel=y_velocity
+
 
     def getPosition(self):
         '''
