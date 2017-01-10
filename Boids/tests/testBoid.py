@@ -1,5 +1,8 @@
 from ..boid import Boid
 from nose.tools import assert_equal, assert_raises
+import yaml
+import os
+import sys
 
 def test_constructor():
     #should work
@@ -60,4 +63,23 @@ def test_setVelocity():
     #y outside boundries
     #assert_raises(ValueError,test_boid.setPosition,6,30)
     #assert_raises(ValueError,test_boid.setPosition,7,-40)
+
+def test_towardsMiddle():
+    with open(os.path.join(os.path.dirname(__file__),'fixtures','fixture_data.yaml'), 'r') as stream:
+        fixture=yaml.load(stream)
+        neighbours=fixture['neighbours']
+        expected_result=fixture['move_towards_expected_velocity']
+        num_boids=fixture['num_boids']
+        tst_boid_init_conds=fixture['test_boid']
+
+        boids=[Boid(*coord) for coord in neighbours]
+        i=0
+        for boid in boids:
+            test_boid=Boid(*tst_boid_init_conds)
+            test_boid.towardsMiddle(boid,num_boids)
+            test_boid_vel=test_boid.getVelocity()
+            print((test_boid_vel['x'],expected_result[i][0]))
+            assert_equal(test_boid_vel['x'],expected_result[i][0])
+            i+=1
+
 
