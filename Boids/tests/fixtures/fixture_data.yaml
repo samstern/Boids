@@ -34,18 +34,21 @@ nearby_boids:
 move_away_nearby_expected_velocity:
   - !!python/tuple [1, 10]
   - !!python/tuple [2, 11]
-  - !!python/tuple [1, -16]
+  - !!python/tuple [1, 10]
 
 
 match_speed_expected_velocity:
   - !!python/tuple [0.9931718076535568, 9.981306956059264]
   - !!python/tuple [0.998140311073415, 9.710835896932531]
-  - !!python/tuple [1, 1]
-  - !!python/tuple [1, 1]
-  - !!python/tuple [1, 1]
-  - !!python/tuple [1, 1]
-  - !!python/tuple [1, 1]
-  - !!python/tuple [1, 1]
-  - !!python/tuple [1, 1]
-  - !!python/tuple [1, 1]
+  - !!python/tuple [1, 10]
+  - !!python/tuple [1, 10]
+  - !!python/tuple [1, 10]
+  - !!python/tuple [1, 10]
+  - !!python/tuple [1, 10]
+  - !!python/tuple [1, 10]
+  - !!python/tuple [1, 10]
+  - !!python/tuple [1, 10]
+
+
+next_period_velocity: {'x':-399.0,'y':510.0}
 

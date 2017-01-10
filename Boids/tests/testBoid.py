@@ -78,8 +78,8 @@ def test_towardsMiddle():
             test_boid=Boid(*tst_boid_init_conds)
             test_boid.towardsMiddle(boid,num_boids)
             test_boid_vel=test_boid.getVelocity()
-            print((test_boid_vel['x'],expected_result[i][0]))
             assert_equal(test_boid_vel['x'],expected_result[i][0])
+            assert_equal(test_boid_vel['y'],expected_result[i][1])
             i+=1
 
 def test_awayFromNeighbour():
@@ -95,8 +95,8 @@ def test_awayFromNeighbour():
             test_boid=Boid(*tst_boid_init_conds)
             test_boid.awayFromNeighbour(boid)
             test_boid_vel=test_boid.getVelocity()
-            print((test_boid_vel['x'],expected_result[i][0]))
-            assert_equal(test_boid_vel['x'],expected_result[i][0])
+            assert_equal((test_boid_vel['x'],test_boid_vel['y']),expected_result[i])
+            #assert_equal(test_boid_vel['y'],expected_result[i][1])
             i+=1
 
 def test_matchSpeedOfNeighbour():
@@ -113,9 +113,19 @@ def test_matchSpeedOfNeighbour():
             test_boid=Boid(*tst_boid_init_conds)
             test_boid.matchSpeedOfNeighbour(boid,num_boids)
             test_boid_vel=test_boid.getVelocity()
-            print((test_boid_vel['x'],expected_result[i][0]))
             assert_equal(test_boid_vel['x'],expected_result[i][0])
+            assert_equal(test_boid_vel['y'],expected_result[i][1])
             i+=1
+
+def test_move():
+    with open(os.path.join(os.path.dirname(__file__),'fixtures','fixture_data.yaml'), 'r') as stream:
+        fixture=yaml.load(stream)
+        tst_boid_init_conds=fixture['test_boid']
+        expected_result=fixture['next_period_velocity']
+        test_boid=Boid(*tst_boid_init_conds)
+        test_boid.move()
+        assert_equal(test_boid.getPosition(),expected_result)
+
 
 
 
