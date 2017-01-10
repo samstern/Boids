@@ -128,7 +128,7 @@ class Boid:
         '''
         boid_pos=boid.getPosition()
         boid_vel=boid.getVelocity()
-        is_neighbour=((boid_pos['x']-self._x_pos)**2 + (boid_pos['y']-self._y_pos)**2) < 1000
+        is_neighbour=((boid_pos['x']-self._x_pos)**2 + (boid_pos['y']-self._y_pos)**2) < 10000
         if is_neighbour:
             new_x_vel=self._x_vel+(boid_vel['x']-self._x_vel)*0.125/num_boids
             new_y_vel=self._y_vel+(boid_vel['y']-self._y_vel)*0.125/num_boids

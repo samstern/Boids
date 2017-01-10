@@ -99,6 +99,26 @@ def test_awayFromNeighbour():
             assert_equal(test_boid_vel['x'],expected_result[i][0])
             i+=1
 
+def test_matchSpeedOfNeighbour():
+    with open(os.path.join(os.path.dirname(__file__),'fixtures','fixture_data.yaml'), 'r') as stream:
+        fixture=yaml.load(stream)
+        neighbours=fixture['neighbours']
+        expected_result=fixture['match_speed_expected_velocity']
+        num_boids=fixture['num_boids']
+        tst_boid_init_conds=fixture['test_boid']
+
+        boids=[Boid(*coord) for coord in neighbours]
+        i=0
+        for boid in boids:
+            test_boid=Boid(*tst_boid_init_conds)
+            test_boid.matchSpeedOfNeighbour(boid,num_boids)
+            test_boid_vel=test_boid.getVelocity()
+            print((test_boid_vel['x'],expected_result[i][0]))
+            assert_equal(test_boid_vel['x'],expected_result[i][0])
+            i+=1
+
+
+
 
 
 
