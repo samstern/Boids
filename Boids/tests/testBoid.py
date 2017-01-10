@@ -68,7 +68,7 @@ def test_towardsMiddle():
     with open(os.path.join(os.path.dirname(__file__),'fixtures','fixture_data.yaml'), 'r') as stream:
         fixture=yaml.load(stream)
         neighbours=fixture['neighbours']
-        expected_result=fixture['move_towards_expected_velocity']
+        expected_result=fixture['move_towards_center_expected_velocity']
         num_boids=fixture['num_boids']
         tst_boid_init_conds=fixture['test_boid']
 
@@ -81,5 +81,24 @@ def test_towardsMiddle():
             print((test_boid_vel['x'],expected_result[i][0]))
             assert_equal(test_boid_vel['x'],expected_result[i][0])
             i+=1
+
+def test_awayFromNeighbour():
+    with open(os.path.join(os.path.dirname(__file__),'fixtures','fixture_data.yaml'), 'r') as stream:
+        fixture=yaml.load(stream)
+        nearby_boids=fixture['nearby_boids']
+        expected_result=fixture['move_away_nearby_expected_velocity']
+        tst_boid_init_conds=fixture['test_boid']
+
+        boids=[Boid(*coord) for coord in nearby_boids]
+        i=0
+        for boid in boids:
+            test_boid=Boid(*tst_boid_init_conds)
+            test_boid.awayFromNeighbour(boid)
+            test_boid_vel=test_boid.getVelocity()
+            print((test_boid_vel['x'],expected_result[i][0]))
+            assert_equal(test_boid_vel['x'],expected_result[i][0])
+            i+=1
+
+
 
 

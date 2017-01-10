@@ -14,8 +14,18 @@ neighbours:
   - !!python/tuple [-360.9624242283289,343.3885631862444,7.325519568238469,10.758257988589325]
   - !!python/tuple [-279.48839704796114,378.1325917158862,4.684892972190452, -2.6936130184668485]
 
+nearby_boids:
+ - !!python/tuple [-400.0, 500.0, 1.0, 10.0]
+ - !!python/tuple [-401.0, 499.0, 1.0, 9.0]
+ - !!python/tuple [-428.0, 526.0, 0.45, 8.5]
 
-move_towards_expected_velocity:
+move_away_nearby_expected_velocity:
+  - !!python/tuple [1, 10]
+  - !!python/tuple [2, 11]
+  - !!python/tuple [1, -16]
+
+
+move_towards_center_expected_velocity:
   - !!python/tuple [0.9710074030958261,10.026028030684795]
   - !!python/tuple [1.0130021664243154, 10.087982089998354]
   - !!python/tuple [1.3931588431395836, 10.0858420312184]
@@ -26,3 +36,4 @@ move_towards_expected_velocity:
   - !!python/tuple [1.131233654656281, 10.085844848479763]
   - !!python/tuple [1.039037575771671, 9.843388563186245]
   - !!python/tuple [1.1205116029520388, 9.878132591715886]
+
