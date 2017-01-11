@@ -1,4 +1,4 @@
-from boid import Boid
+from Boids.boid import Boid
 
 class Flock():
 
