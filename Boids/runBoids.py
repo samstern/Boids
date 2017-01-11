@@ -16,7 +16,7 @@ def runIt():
     axes=plt.axes(xlim=(-500,1500), ylim=(-500,1500))
     flock_xs=[boid.getPosition()['x'] for boid in flock.boids]
     flock_ys=[boid.getPosition()['y'] for boid in flock.boids]
-    
+
     scatter=axes.scatter(flock_xs,flock_ys)
     def animate(frame):
         flock_xs=[boid.getPosition()['x'] for boid in flock.boids]
