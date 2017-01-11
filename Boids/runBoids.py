@@ -1,4 +1,4 @@
-from Boids.flock import Flock
+from flock import Flock
 import argparse
 from matplotlib import pyplot as plt
 from matplotlib import animation
