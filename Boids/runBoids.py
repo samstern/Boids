@@ -1,8 +1,17 @@
 from flock import Flock
+import argparse
 from matplotlib import pyplot as plt
 from matplotlib import animation
 
-flock=Flock(50)
+
+def parser():
+    parser = argparse.ArgumentParser(description = 'Python2 simulation of the Boids algorithm')
+    parser.add_argument('--num_boids','-n', type=int, default='50', required=False, help='The number of boids in the simulation')
+
+    args=parser.parse_args()
+    return args
+args=parser()
+flock=Flock(args.num_boids)
 
 figure=plt.figure()
 axes=plt.axes(xlim=(-500,1500), ylim=(-500,1500))
