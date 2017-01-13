@@ -22,7 +22,7 @@ def runIt():
         flock_xs=[boid.getPosition()['x'] for boid in flock.boids]
         flock_ys=[boid.getPosition()['y'] for boid in flock.boids]
         flock.update_boids()
-        scatter.set_offsets(zip(flock_xs,flock_ys))
+        scatter.set_offsets(list(zip(flock_xs,flock_ys)))
 
     anim = animation.FuncAnimation(figure, animate,
                                    frames=50, interval=50)
